@@ -1,0 +1,46 @@
+<template>
+  <nav>
+    <div class="nav-text">brepi</div>
+    <div class="nav-options">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+</template>
+
+<script>
+export default {
+  name: "Navbar"
+};
+</script>
+<style scoped>
+nav {
+  background-color: lightcoral;
+  height: 80px;
+}
+
+.nav-text {
+  color: black;
+  font-size: 40px;
+  float: left;
+  margin: 10px;
+}
+
+.nav-options {
+  font-size: 30px;
+  float: right;
+  margin: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  margin-right: 40px;
+}
+a:hover {
+  color: yellow;
+}
+</style>
+
+
+
