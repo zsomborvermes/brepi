@@ -2,7 +2,7 @@
   <nav>
     <div class="nav-text">brepi</div>
     <div class="nav-options">
-      <a href="#">Home</a>
+      <a href="/">Home</a>
       <a href="#">About</a>
     </div>
   </nav>
@@ -15,12 +15,12 @@ export default {
 </script>
 <style scoped>
 nav {
-  background-color: lightcoral;
+  background-color: rgba(150, 79, 12, 0.9);
   height: 80px;
 }
 
 .nav-text {
-  color: black;
+  color: yellow;
   font-size: 40px;
   float: left;
   margin: 10px;

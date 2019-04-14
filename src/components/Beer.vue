@@ -1,41 +1,71 @@
 <template>
-  <div class="card">
-    <img
-      src="https://cdn.shopify.com/s/files/1/0810/4433/products/beer_gold_b228a9f0-c006-4059-8135-53ab896fe9f1_large.jpg?v=1527636163"
-    >
+  <div class="card" v-on:click="onClick">
+    <img v-show="!clicked" v-bind:src="beer.image_url">
+    <div v-show="clicked" class="description">
+      <h3>Description</h3>
+      <p>{{ beer.description }}</p>
+    </div>
     <div class="container">
       <h4>
-        <b>Beer</b>
+        <b>{{beer.name}}</b>
       </h4>
-      <p>Delicious!</p>
+      <p>{{beer.tagline}}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Beer"
+  name: "Beer",
+  props: ["beer", "clickedBeer"],
+  data() {
+    return {
+      clicked: false
+    };
+  },
+  watch: {
+    clickedBeer: function(clickedBeerId) {
+      if (clickedBeerId !== this.beer.id) {
+        this.clicked = false;
+      }
+    }
+  },
+  methods: {
+    onClick() {
+      this.$emit('beer-click', this.beer.id);
+      this.clicked = !this.clicked;
+    }
+  }
 };
 </script>
 
 <style scoped>
 .card:hover {
-  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .card {
+  color: black;
   transition: 0.3s;
   border-radius: 5px;
   width: 300px;
   height: 330px;
   margin: 20px;
-  background-color: lightcoral;
+  padding-top: 20px;
+  background-color: rgba(235, 185, 93, 0.5);
 }
 
 img {
-  margin-top: 20px;
-  width: 200px;
+  width: 80px;
   height: 200px;
   border-radius: 5px;
+}
+.description {
+  width: 260px;
+  height: 206px;
+  border-radius: 5px;
+  overflow: scroll;
+  margin: auto;
+  text-align: justify;
 }
 </style>
