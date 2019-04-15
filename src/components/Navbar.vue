@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="nav-text">brepi</div>
+    <a class="nav-text" href="/">brepi</a>
     <div class="nav-options">
       <a href="/">Home</a>
       <a href="#">About</a>

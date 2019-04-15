@@ -1,6 +1,7 @@
 <template>
   <div class="paginator">
     <button v-show="pageNumber > 1" v-on:click="changePage(pageNumber - 1)"><<</button>
+    <button v-show="pageNumber > 1" v-on:click="changePage(1)">First</button>
     <button v-show="pageNumber > 2" v-on:click="changePage(pageNumber - 2)">{{pageNumber - 2}}</button>
     <button v-show="pageNumber > 1" v-on:click="changePage(pageNumber - 1)">{{pageNumber - 1}}</button>
     <button class="current-page">{{pageNumber}}</button>
