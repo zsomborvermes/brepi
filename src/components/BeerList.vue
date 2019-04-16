@@ -2,7 +2,11 @@
   <div>
     <div class="main">
       <div v-bind:key="beer.id" v-for="beer in beerList">
-        <Beer v-on:beer-click="handleClick" v-bind:clickedBeer="clickedBeer" v-bind:beer="beer"/>
+        <Beer
+          v-on:beer-click="handleClick"
+          v-bind:isSelected="selectedBeerId === beer.id"
+          v-bind:beer="beer"
+        />
       </div>
     </div>
     <Paginator v-on:change-page="changePage"/>
@@ -11,7 +15,7 @@
 
 <script>
 import Beer from "./Beer.vue";
-import Paginator from "./Paginator.vue"
+import Paginator from "./Paginator.vue";
 
 export default {
   name: "BeerList",
@@ -21,13 +25,17 @@ export default {
   },
   data() {
     return {
-      clickedBeer: 0
+      selectedBeerId: 0
     };
   },
   props: ["beerList"],
   methods: {
     handleClick(id) {
-      this.clickedBeer = id;
+      if (this.selectedBeerId === id) {
+        this.selectedBeerId = 0;
+      } else {
+        this.selectedBeerId = id;
+      }
     },
     changePage(pageNumber) {
       this.$emit("change-page", pageNumber);

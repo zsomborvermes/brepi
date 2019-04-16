@@ -1,7 +1,7 @@
 <template>
   <div class="card" v-on:click="onClick">
-    <img v-show="!clicked" v-bind:src="beer.image_url">
-    <div v-show="clicked" class="description">
+    <img v-show="!isSelected" v-bind:src="beer.image_url">
+    <div v-show="isSelected" class="description">
       <h3>Description</h3>
       <p>{{ beer.description }}</p>
     </div>
@@ -17,23 +17,10 @@
 <script>
 export default {
   name: "Beer",
-  props: ["beer", "clickedBeer"],
-  data() {
-    return {
-      clicked: false
-    };
-  },
-  watch: {
-    clickedBeer: function(clickedBeerId) {
-      if (clickedBeerId !== this.beer.id) {
-        this.clicked = false;
-      }
-    }
-  },
+  props: ["beer", "isSelected"],
   methods: {
     onClick() {
       this.$emit('beer-click', this.beer.id);
-      this.clicked = !this.clicked;
     }
   }
 };
